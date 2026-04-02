@@ -1,0 +1,9 @@
+{
+  "buildCommand": "cd artifacts/travel-site && pnpm install && pnpm run build",
+  "outputDirectory": "artifacts/travel-site/dist",
+  "installCommand": "pnpm install",
+  "framework": null,
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
