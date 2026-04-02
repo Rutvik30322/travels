@@ -1,6 +1,6 @@
 {
   "buildCommand": "pnpm --filter @workspace/travel-site run build",
-  "outputDirectory": "dist",
+  "outputDirectory": "artifacts/travel-site/dist",
   "installCommand": "pnpm install",
   "framework": null,
   "rewrites": [
