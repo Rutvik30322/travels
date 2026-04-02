@@ -1,0 +1,210 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --font-sans: var(--app-font-sans);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --background: 220 20% 97%;
+  --foreground: 220 25% 10%;
+  --border: 220 15% 88%;
+  --input: 220 15% 88%;
+  --ring: 16 100% 50%;
+  --card: 0 0% 100%;
+  --card-foreground: 220 25% 10%;
+  --primary: 16 100% 50%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 220 15% 94%;
+  --secondary-foreground: 220 25% 15%;
+  --muted: 220 15% 94%;
+  --muted-foreground: 220 10% 48%;
+  --accent: 210 85% 50%;
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 84% 60%;
+  --app-font-sans: 'Inter', system-ui, sans-serif;
+  --radius: 0.875rem;
+}
+
+@layer base {
+  * { @apply border-border; }
+  html { scroll-behavior: smooth; }
+  body { @apply font-sans antialiased bg-background text-foreground; }
+}
+
+/* ── Hero Gradient ─────────────────────────────── */
+.hero-gradient {
+  background: linear-gradient(135deg,
+    #0a0a1a 0%,
+    #0f1a2e 25%,
+    #1a0a00 55%,
+    #2d1400 80%,
+    #0a1520 100%
+  );
+}
+
+/* ── Animated mesh orbs ────────────────────────── */
+.mesh-orb-1 {
+  background: radial-gradient(circle, rgba(249,115,22,0.4) 0%, transparent 70%);
+  animation: float1 8s ease-in-out infinite;
+}
+.mesh-orb-2 {
+  background: radial-gradient(circle, rgba(59,130,246,0.3) 0%, transparent 70%);
+  animation: float2 10s ease-in-out infinite;
+}
+.mesh-orb-3 {
+  background: radial-gradient(circle, rgba(168,85,247,0.2) 0%, transparent 70%);
+  animation: float3 12s ease-in-out infinite;
+}
+
+@keyframes float1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(40px, -30px) scale(1.1); }
+  66%       { transform: translate(-20px, 20px) scale(0.95); }
+}
+@keyframes float2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  40%       { transform: translate(-50px, 40px) scale(1.05); }
+  70%       { transform: translate(30px, -20px) scale(1.1); }
+}
+@keyframes float3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50%       { transform: translate(30px, 30px) scale(1.15); }
+}
+
+/* ── Card hover ────────────────────────────────── */
+.card-hover {
+  transition: transform 0.3s cubic-bezier(.25,.46,.45,.94), box-shadow 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 48px rgba(0,0,0,0.10), 0 0 0 1px rgba(249,115,22,0.12);
+}
+
+/* ── Scroll reveal ─────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Number counter pulse ──────────────────────── */
+.stat-number {
+  animation: countUp 0.6s ease-out forwards;
+}
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Gradient text ─────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #f97316 0%, #fb923c 50%, #f59e0b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Shine button ──────────────────────────────── */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+.btn-shine::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -75%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+  transform: skewX(-20deg);
+  transition: none;
+}
+.btn-shine:hover::before {
+  animation: shine 0.6s ease forwards;
+}
+@keyframes shine {
+  to { left: 125%; }
+}
+
+/* ── Nav glass ─────────────────────────────────── */
+.nav-glass {
+  background: rgba(255,255,255,0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+/* ── Icon bounce ───────────────────────────────── */
+.icon-bounce:hover {
+  animation: iconBounce 0.4s ease;
+}
+@keyframes iconBounce {
+  0%,100% { transform: scale(1); }
+  40%      { transform: scale(1.2); }
+  70%      { transform: scale(0.95); }
+}
+
+/* ── Stagger animation ─────────────────────────── */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+
+/* ── Pulse ring ────────────────────────────────── */
+.pulse-ring {
+  position: relative;
+}
+.pulse-ring::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  border: 2px solid rgba(249,115,22,0.4);
+  animation: pulseRing 2s ease-out infinite;
+}
+@keyframes pulseRing {
+  0%   { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.4); }
+}
+
+/* ── Road line animation ───────────────────────── */
+@keyframes roadLine {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(100vw); }
+}
+.road-line {
+  animation: roadLine 3s linear infinite;
+}
+
+/* ── Tag badge ─────────────────────────────────── */
+.tag-badge {
+  background: linear-gradient(135deg, #f97316, #fb923c);
+  box-shadow: 0 2px 8px rgba(249,115,22,0.35);
+}

@@ -1,0 +1,26 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "ul1lN4QaAWnpf5DnGzU9g"
+uri = "file://artifacts/travel-site/public/images/hero.png"
+type = "image"
+title = "Cinematic desert highway SUV"
+
+[[generated]]
+id = "JsuS6YmM56gtoWL3JUvzl"
+uri = "file://artifacts/travel-site/public/images/featured-1.png"
+type = "image"
+title = "Luxury sedan on coastal highway"
+
+[[generated]]
+id = "_FiluvC-hTH3Lhmo11aK-"
+uri = "file://artifacts/travel-site/public/images/featured-2.png"
+type = "image"
+title = "Camper van in mountain pass"
+
+[[generated]]
+id = "DEaZj0XCEhPjT4cfmEIwP"
+uri = "file://artifacts/travel-site/public/images/featured-3.png"
+type = "image"
+title = "Modern SUV in red rocks"
